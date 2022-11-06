@@ -6,7 +6,28 @@ import Card from "../Card";
 import { product } from "../../config/taroApi";
 
 interface cardMsgProps {
-    item: Array<object>
+    item: emergeProps
+}
+
+interface emergeProps {
+    emergeTag?: string;
+    data: Array<productProps>
+}
+
+interface productProps {
+    productColor: Array<string>
+    productEmergeSite: string
+    productId: number
+    productMsg: string
+    productMsgImg: Array<string>
+    productName: string
+    productPrice: number
+    productRotationImg: Array<string>
+    productSalesVolume: number
+    productSellingPrice: number
+    productSize: Array<string>
+    productStock: number
+    productType: string
 }
 
 export default class CardMsgList extends Component<cardMsgProps> {
@@ -19,10 +40,11 @@ export default class CardMsgList extends Component<cardMsgProps> {
     render() {
         return (
             <View className='card-msg-list'>
+                <View className='card-msg-list-item'>{this.props.item.emergeTag}</View>
                 <ScrollView scrollX style={{ whiteSpace: "nowrap" }}>
-                    {this.state.data.map((item: number, index: number) => {
+                    {this.props.item.data.map((item: productProps, index: number) => {
                         return (
-                            <Card key={index} isFlex={true} />
+                            <Card key={index} isFlex={false} item={item} />
                         )
                     })}
                 </ScrollView>

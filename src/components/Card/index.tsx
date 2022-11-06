@@ -4,14 +4,31 @@ import './index.scss'
 import Taro from '@tarojs/taro'
 
 interface cardProps {
+    item?: productProps
     isFlex: boolean
 }
 
+interface productProps {
+    productColor: Array<string>
+    productEmergeSite: string
+    productId: number
+    productMsg: string
+    productMsgImg: Array<string>
+    productName: string
+    productPrice: number
+    productRotationImg: Array<string>
+    productSalesVolume: number
+    productSellingPrice: number
+    productSize: Array<string>
+    productStock: number
+    productType: string
+}
 export default class Card extends Component<cardProps> {
     state = {
         isFlex: false
     }
     render() {
+        console.log("Card", this.props)
         return (
             <View className={`card ${this.props.isFlex ? "flex" : ""}'`}>
                 <View className='card-img'>
