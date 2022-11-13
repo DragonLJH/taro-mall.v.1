@@ -1,0 +1,15 @@
+.card-msg-list{
+    padding-top: 10px;
+    margin: 10px;
+    .card-msg-list-item{
+        border-bottom: solid 1px #ccc;
+        .card-msg-list-item-text{
+            width: 100px;
+            color: #fff;
+            border: solid 1px #ccc;
+            padding: 5px 5px 0px 5px;
+            background-color: #d87708;
+            box-shadow: 0px 5px 5px #ccc;
+        }
+    }
+}
