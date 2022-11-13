@@ -4,7 +4,7 @@ import './index.scss'
 import Taro from '@tarojs/taro'
 
 interface cardProps {
-    item?: productProps
+    item: productProps
     isFlex: boolean
 }
 
@@ -32,17 +32,17 @@ export default class Card extends Component<cardProps> {
         return (
             <View className={`card ${this.props.isFlex ? "flex" : ""}'`}>
                 <View className='card-img'>
-                    <CoverImage className='img' src="http://150.158.96.29:8082/my-shop-img/uploadRotationImg/386a621929dc40269a6a9dcfd6802658.jpg" />
+                    <CoverImage className='img' src={this.props.item.productRotationImg[0]} />
                 </View>
                 <View className='card-main'>
                     <View className='card-main-title'>
-                        <Text>男鞋</Text>
+                        <Text>{this.props.item.productName}</Text>
                     </View>
                     <View className='card-main-price'>
-                        <Text>199</Text>
+                        <Text>{this.props.item.productSellingPrice}</Text>
                     </View>
                     <View className='card-main-msg'>
-                        <Text>1123123男鞋那时的话说的亲12312312123123123123123123123</Text>
+                        <Text>{this.props.item.productMsg}</Text>
                     </View>
                 </View>
             </View>
