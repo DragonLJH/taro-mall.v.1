@@ -40,6 +40,8 @@ class Index extends Component<any> {
   }
 
   componentWillMount() {
+    console.log("componentWillMount")
+    this.props.dispatch({ type: "ADD_PAGE", data: "HomePage" })
     this.ACTIVE_CHANGE("HomePage")
   }
 
