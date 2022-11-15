@@ -13,8 +13,14 @@ function mapDispatchToProps(dispatch) {
 }
 
 class NavMain extends Component<any> {
+  state = {
+    searchStr: ""
+  }
 
   TO_SEARCH_PAGE(data) {
+    const { searchStr } = this.state
+    console.log("searchStr", searchStr)
+    this.props.dispatch({ type: "SEARCHSTR_CHANGE", data: searchStr })
     this.props.dispatch({ type: "ADD_PAGE", data: data })
     this.props.dispatch({ type: "ACTIVE_CHANGE", data: data })
   }
@@ -28,16 +34,16 @@ class NavMain extends Component<any> {
   }
 
   render() {
-    const { activeComponent, pageArr } = this.props.state
+    const { activeComponent, pageArr, searchStr } = this.props.state
     const flag = activeComponent === "HomePage" ? "" : " active"
-    console.log("Nav", activeComponent, pageArr)
+    console.log("Nav", activeComponent, pageArr, searchStr)
     return (
       <>
         <View className='nav'>
           <View className='nav-search'>
             <View className={`nav-search-left${flag}`} onClick={() => this.TO_BACK()}></View>
             <View className={`nav-search-right${flag}`}>
-              <Input type="text" />
+              <Input type="text" value={this.state.searchStr} onInput={(e) => this.setState({ searchStr: e.target["value"] })} />
               <View className='nav-search-item' onClick={() => this.TO_SEARCH_PAGE("SearchPage")}>
                 搜索
               </View>
