@@ -5,6 +5,15 @@ type actionObject = {
     data?: Array<object> | string | number | object | boolean
 }
 
+const productId = (state: number = 0, action: actionObject) => {
+    switch (action.type) {
+        case 'PRODUCTID_CHANGE':
+            return action.data
+        default:
+            return state
+    }
+}
+
 const searchStr = (state: Array<string> = [], action: actionObject) => {
     switch (action.type) {
         case 'SEARCHSTR_CHANGE':
@@ -39,6 +48,6 @@ const activeComponent = (state: string = "", action: actionObject) => {
 
 
 
-const reducers = combineReducers({ activeComponent, pageArr, searchStr })
+const reducers = combineReducers({ activeComponent, pageArr, searchStr, productId })
 
 export const store = createStore(reducers);

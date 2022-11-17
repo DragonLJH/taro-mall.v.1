@@ -5,6 +5,7 @@ import './index.scss'
 import NavMain from '../../components/NavMain';
 import HomePage from '../../components/HomePage';
 import SearchPage from '../../components/SearchPage';
+import ProductPage from '../../components/ProductPage';
 
 interface emergeProps {
   emergeTag: string;
@@ -34,6 +35,7 @@ class Index extends Component<any> {
     switch (activeComponent) {
       case "HomePage": return <HomePage></HomePage>
       case "SearchPage": return <SearchPage></SearchPage>
+      case "ProductPage": return <ProductPage></ProductPage>
       default:
         break;
     }

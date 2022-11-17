@@ -1,6 +1,9 @@
 .nav {
     .nav-search {
         .nav-search-left {
+            position: fixed;
+            top: 0px;
+            left: 0px;
             padding: 15px 10px;
             margin: 10px 5px;
             display: none;
@@ -13,9 +16,9 @@
         }
         .nav-search-right {
             position: fixed;
-            width: calc(100% - 52px);
             top: 0px;
             left: 0px;
+            width: calc(100% - 52px);
             &.active {
                 width: calc(100% - 102px);
                 left: 50px;

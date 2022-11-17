@@ -1,9 +1,12 @@
 import { Component, PropsWithChildren } from 'react'
+import { connect } from 'react-redux';
 import { View, Text, CoverImage } from '@tarojs/components'
 import './index.scss'
 import Taro from '@tarojs/taro'
 
 interface cardProps {
+    state?: any
+    dispatch?: any
     item: productProps
     isFlex: boolean
 }
@@ -23,14 +26,29 @@ interface productProps {
     productStock: number
     productType: string
 }
-export default class Card extends Component<cardProps> {
+
+function mapStateToProps(state) {
+    return { state }
+}
+
+function mapDispatchToProps(dispatch) {
+    return { dispatch }
+}
+class Card extends Component<cardProps> {
     state = {
         isFlex: false
     }
+
+    TO_PRODUCT_PAGE() {
+        const { productId } = this.props.item
+        this.props.dispatch({ type: "PRODUCTID_CHANGE", data: productId })
+        this.props.dispatch({ type: "ADD_PAGE", data: "ProductPage" })
+        this.props.dispatch({ type: "ACTIVE_CHANGE", data: "ProductPage" })
+    }
+
     render() {
-        console.log("Card", this.props)
         return (
-            <View className={`card ${this.props.isFlex ? "flex" : ""}'`}>
+            <View onClick={() => this.TO_PRODUCT_PAGE()} className={`card ${this.props.isFlex ? "flex" : ""}'`}>
                 <View className='card-img'>
                     <CoverImage className='img' src={this.props.item.productRotationImg[0]} />
                 </View>
@@ -49,3 +67,5 @@ export default class Card extends Component<cardProps> {
         )
     }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Card)

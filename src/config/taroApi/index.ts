@@ -33,6 +33,11 @@ export const product = () => {
         return TARO.get(url, data)
     }
 
-    return { queryProductByEmerge, queryProductByProductMsg }
+    const queryProductById = (data: object = {}) => {
+        let url = product + "/queryProductById"
+        return TARO.get(url, data)
+    }
+
+    return { queryProductByEmerge, queryProductByProductMsg, queryProductById }
 }
 
