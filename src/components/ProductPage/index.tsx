@@ -46,9 +46,32 @@ const ProductPage: FC = (props: any) => {
             {Object.keys(data).length ? (
                 <View className='product-page'>
                     <Carousel imgArr={data.productRotationImg} />
-                    <View className='price'>
-                        <Text>{data.productSellingPrice}</Text>
-                        <Text>{data.productPrice}</Text>
+                    <View className='product-msg'>
+                        <View className='price'>
+                            <Text>{data.productSellingPrice}</Text>
+                            <Text className='del'>{data.productPrice}</Text>
+                        </View>
+                        <View className='name'>
+                            <Text>{data.productName}</Text>
+                        </View>
+                        <View className='msg'>
+                            <Text className='msg-title'>{data.productEmergeSite.split("#")[0]}</Text>
+                            <Text>{data.productMsg}</Text>
+                        </View>
+                    </View>
+                    <View className='product-page-bottom'>
+                        <View className='product-page-star'>
+                            收藏
+                        </View>
+                        <View className='product-page-operation'>
+                            <View className='product-page-operation-item'>
+                                加入购物车
+                            </View>
+                            <View className='product-page-operation-item'>
+                                立即购买
+                            </View>
+                        </View>
+
                     </View>
                 </View>
             ) : ""}

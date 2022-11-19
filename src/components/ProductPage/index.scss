@@ -1,0 +1,60 @@
+$priceColor: #fc9105;
+$delColor: #ccc;
+
+.product-page {
+    .product-msg {
+        margin: 10px;
+        padding: 10px;
+        border: solid 1px #ccc;
+        border-radius: 25px;
+
+        .price {
+
+            text {
+                color: $priceColor;
+                font-size: 1.25rem;
+                margin-right: 15px;
+            }
+
+            text::before {
+                content: "￥";
+            }
+
+            .del {
+                font-size: 0.85rem;
+                color: $delColor;
+                text-decoration: line-through;
+            }
+        }
+
+        .name {
+            text {
+                font-size: 0.80rem;
+            }
+
+        }
+
+        .msg {
+            .msg-title {
+                background-color: #fc9105;
+                color: #fff;
+                padding: 5px 15px;
+                border: #fc9105 solid 1px;
+                border-radius: 15px;
+            }
+
+            text {
+                font-size: 0.70rem;
+            }
+
+        }
+    }
+
+    .product-page-bottom {
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0xp -5px 5px #ccc;
+    }
+}
