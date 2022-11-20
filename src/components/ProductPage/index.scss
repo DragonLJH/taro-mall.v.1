@@ -50,11 +50,42 @@ $delColor: #ccc;
         }
     }
 
+    .choice-msg{
+        
+    }
+
     .product-page-bottom {
         position: fixed;
+        display: flex;
+        justify-content: space-around; 
         bottom: 0px;
-        width: 100%;
+        width: 100%; 
+        padding: 5px 0px;
         background-color: #fff;
-        box-shadow: 0xp -5px 5px #ccc;
+        box-shadow: 0px -5px 5px #ccc;
+        text-align: center;
+        .product-page-star{
+            width: 2rem;
+            :last-child{
+                font-size: 0.5rem;
+            }
+        }
+        .product-page-operation{
+            width: 12rem;
+            display: flex;
+            border-radius: 1rem;
+            overflow: hidden;
+            .product-page-operation-item:first-child{
+                border-right: solid 3px #aaa;
+            }
+            .product-page-operation-item{
+                flex: 1;
+                background-color: #fc9105;
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
     }
 }

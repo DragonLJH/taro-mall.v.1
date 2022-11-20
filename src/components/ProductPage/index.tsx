@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import { View, Text, CoverImage } from '@tarojs/components'
+import { AtIcon } from 'taro-ui'
 import { connect } from 'react-redux';
 import Carousel from '../Carousel';
 import Card from '../Card';
@@ -59,9 +60,17 @@ const ProductPage: FC = (props: any) => {
                             <Text>{data.productMsg}</Text>
                         </View>
                     </View>
+                    <View className='choice-msg'>
+                        
+                    </View>
+
+
                     <View className='product-page-bottom'>
                         <View className='product-page-star'>
-                            收藏
+                            <View className='at-icon at-icon-heart'></View>
+                            <View>
+                                <Text>收藏</Text>
+                            </View>
                         </View>
                         <View className='product-page-operation'>
                             <View className='product-page-operation-item'>

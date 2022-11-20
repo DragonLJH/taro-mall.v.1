@@ -1,4 +1,5 @@
 import { Component, PropsWithChildren } from 'react'
+import { AtIcon } from 'taro-ui'
 import { connect } from "react-redux"
 import { View, Text, Input, Button, ScrollView } from '@tarojs/components'
 import './index.scss'
@@ -41,7 +42,9 @@ class NavMain extends Component<any> {
       <>
         <View className='nav'>
           <View className='nav-search'>
-            <View className={`nav-search-left${flag}`} onClick={() => this.TO_BACK()}></View>
+            <View className={`nav-search-left${flag}`} onClick={() => this.TO_BACK()}>
+            <View className='at-icon at-icon-chevron-left'></View>
+            </View>
             <View className={`nav-search-right${flag}`}>
               <Input type="text" value={this.state.searchStr} onInput={(e) => this.setState({ searchStr: e.target["value"] })} />
               <View className='nav-search-item' onClick={() => this.TO_SEARCH_PAGE("SearchPage")}>

@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import { store } from "./store"
 import { Provider } from "react-redux"
-
+import 'taro-ui/dist/style/index.scss'
 
 import './app.scss'
 
