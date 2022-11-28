@@ -1,6 +1,6 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useState, Component } from 'react'
 import { View, Text, CoverImage } from '@tarojs/components'
-import { AtIcon } from 'taro-ui'
+import { AtIcon, AtFloatLayout } from 'taro-ui'
 import { connect } from 'react-redux';
 import Carousel from '../Carousel';
 import Card from '../Card';
@@ -32,6 +32,7 @@ interface productProps {
     productType: string
 }
 
+
 const ProductPage: FC = (props: any) => {
     const { productId } = props.state
     const [data, setData] = useState({} as productProps)
@@ -41,6 +42,9 @@ const ProductPage: FC = (props: any) => {
             console.log("useEffect-ProductPage", res)
         })
     }, [])
+    const handleClose = () => {
+
+    }
     return (
         <>
 
@@ -61,7 +65,7 @@ const ProductPage: FC = (props: any) => {
                         </View>
                     </View>
                     <View className='choice-msg'>
-                        
+                        <AtFloatLayout isOpened={true} onClose={handleClose}>123</AtFloatLayout>
                     </View>
 
 
