@@ -1,9 +1,17 @@
 import { createStore, combineReducers } from 'redux';
 
-type actionObject = {
+interface actionObject {
     type?: string;
     data?: Array<object> | string | number | object | boolean
 }
+
+export interface stateType {
+    activeComponent: string
+    pageArr: Array<string>
+    productId: number
+    searchStr: Array<string>
+}
+
 
 const productId = (state: number = 0, action: actionObject) => {
     switch (action.type) {
