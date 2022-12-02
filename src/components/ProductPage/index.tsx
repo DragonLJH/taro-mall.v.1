@@ -1,6 +1,6 @@
 import { FC, useEffect, useState, Component } from 'react'
 import { View, Text, CoverImage } from '@tarojs/components'
-import { AtIcon, AtFloatLayout, AtTag } from 'taro-ui'
+import { AtIcon, AtFloatLayout, AtTag, AtInputNumber } from 'taro-ui'
 import { connect } from 'react-redux';
 import Carousel from '../Carousel';
 import Card from '../Card';
@@ -82,7 +82,7 @@ const ProductPage: FC = (props: ProductPageProps) => {
     const { productId } = props.state
     const [data, setData] = useState({} as productProps)
     const [choice, setChoice] = useState(false)
-    const [selectData, setSelectData] = useState({})
+    const [selectData, setSelectData] = useState({ selectNum: 0 })
     useEffect(() => {
         product().queryProductById({ productId: productId }).then((res) => {
             setData(res.data)
@@ -135,6 +135,7 @@ const ProductPage: FC = (props: ProductPageProps) => {
                             <Text>尺寸</Text>
                             <MyTags arr={data.productSize} type="selectSize" selectMsg={selectMsg}></MyTags>
                         </View>
+                        <AtInputNumber onChange={(value) => selectMsg({ selectNum: value })} value={selectData.selectNum} min={0} max={10} step={1} />
                     </AtFloatLayout>
                     <View className='product-img-msg'>
                         {data.productMsgImg.map((item, index) => {
