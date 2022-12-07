@@ -79,14 +79,17 @@ const MyTags = (props: myTagsProps) => {
 
 const ProductPage: FC = (props: ProductPageProps) => {
     console.log("ProductPage", props)
-    const { productId } = props.state
+    const { productId,userName } = props.state
     const [data, setData] = useState({} as productProps)
     const [choice, setChoice] = useState(false)
     const [selectData, setSelectData] = useState({ selectNum: 0 })
     useEffect(() => {
-        product().queryProductById({ productId: productId }).then((res) => {
+        product().queryProductById({ productId: productId }).then((res ) => {
             setData(res.data)
-            console.log("useEffect-ProductPage", res)
+            const { productRotationImg, productId, productName, productSellingPrice } = res.data
+            selectMsg({userName:userName,productRotationImg:productRotationImg[0],productId:productId
+                ,productName:productName,productSellingPrice:productSellingPrice}) 
+            console.log("useEffect-ProductPage", productRotationImg, productId, productName, productSellingPrice)
         })
     }, [])
     const handleClose = () => {

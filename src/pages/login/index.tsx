@@ -2,6 +2,7 @@ import { Component, PropsWithChildren } from 'react'
 import { View, Text, Input ,Button} from '@tarojs/components'
 import './index.scss'
 import Taro from '@tarojs/taro'
+import LoginPage from '../../components/LoginPage';
 
 export default class Login extends Component<PropsWithChildren> {
 
@@ -21,13 +22,7 @@ export default class Login extends Component<PropsWithChildren> {
 
   render() {
     return (
-      <View className='login'>
-        <View className='login-item'>
-          <Input type='text' placeholder='请输入账号' focus />
-          <Input type="safe-password" password={true} placeholder='请输入密码' />
-          <Button type='primary'>登录</Button>
-        </View>
-      </View>
+      <LoginPage />
     )
   }
 }
