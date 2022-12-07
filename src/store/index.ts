@@ -10,6 +10,7 @@ export interface stateType {
     pageArr: Array<string>
     productId: number
     searchStr: Array<string>
+    userName: string
 }
 
 
@@ -43,10 +44,18 @@ const pageArr = (state: Array<string> = [], action: actionObject) => {
 }
 
 
-const activeComponent = (state: string = "", action: actionObject) => {
-    console.log("activeComponent", state, action)
+const activeComponent = (state: string = "", action: actionObject) => { 
     switch (action.type) {
         case 'ACTIVE_CHANGE':
+            return action.data
+        default:
+            return state
+    }
+}
+
+const userName = (state: string = "", action: actionObject) => {
+    switch (action.type) {
+        case 'CHANGE_USER':
             return action.data
         default:
             return state
@@ -56,6 +65,6 @@ const activeComponent = (state: string = "", action: actionObject) => {
 
 
 
-const reducers = combineReducers({ activeComponent, pageArr, searchStr, productId })
+const reducers = combineReducers({ activeComponent, pageArr, searchStr, productId, userName })
 
 export const store = createStore(reducers);

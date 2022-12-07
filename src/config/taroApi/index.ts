@@ -41,3 +41,14 @@ export const product = () => {
     return { queryProductByEmerge, queryProductByProductMsg, queryProductById }
 }
 
+
+// user
+export const user = () => {
+    const user = "user"
+    const queryUserByUserName = (data: object = {}) => {
+        let url = user + "/queryUserByUserName"
+        return TARO.get(url, data)
+    }
+    return { queryUserByUserName }
+}
+
