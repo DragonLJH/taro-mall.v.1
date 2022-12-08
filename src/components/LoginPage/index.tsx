@@ -55,8 +55,7 @@ const LoginPage: FC<any> = (props: LoginPageProps) => {
     }
 
     return (
-        <>
-            <Text>{state?.userName}</Text> 
+        <> 
             <AtInput
                 name='userName'
                 title='账号'

@@ -1,10 +1,20 @@
 import { Component, PropsWithChildren } from 'react'
-import { View, Text, Input ,Button} from '@tarojs/components'
+import { connect } from "react-redux"
+import { View, Text, Input, Button } from '@tarojs/components'
 import './index.scss'
 import Taro from '@tarojs/taro'
 import LoginPage from '../../components/LoginPage';
+import UserPage from '../../components/UserPage';
 
-export default class Login extends Component<PropsWithChildren> {
+
+function mapStateToProps(state) {
+  return { state }
+}
+
+function mapDispatchToProps(dispatch) {
+  return { dispatch }
+}
+class Login extends Component<any> {
 
   componentWillMount() { }
 
@@ -21,8 +31,8 @@ export default class Login extends Component<PropsWithChildren> {
   }
 
   render() {
-    return (
-      <LoginPage />
-    )
+    return this.props.state.userName ? <UserPage /> : <LoginPage />
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

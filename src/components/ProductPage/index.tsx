@@ -3,6 +3,7 @@ import { View, Text, CoverImage } from '@tarojs/components'
 import { AtIcon, AtFloatLayout, AtTag, AtInputNumber } from 'taro-ui'
 import { connect } from 'react-redux';
 import Carousel from '../Carousel';
+import Taro from '@tarojs/taro'
 import Card from '../Card';
 import { rotation, emerge, product } from "../../config/taroApi";
 import './index.scss'
@@ -44,6 +45,17 @@ interface myTagsProps {
     selectMsg: Function
 }
 
+interface setSelectDataProps{
+    productId: number
+    productName: string
+    productRotationImg: string
+    productSellingPrice: number
+    selectColor: string
+    selectNum: number
+    selectSize: string
+    userName: string     
+}
+
 
 const MyTags = (props: myTagsProps) => {
     const { arr, type, selectMsg } = props
@@ -82,7 +94,7 @@ const ProductPage: FC = (props: ProductPageProps) => {
     const { productId,userName } = props.state
     const [data, setData] = useState({} as productProps)
     const [choice, setChoice] = useState(false)
-    const [selectData, setSelectData] = useState({ selectNum: 0 })
+    const [selectData, setSelectData] = useState({ selectNum: 0 } as setSelectDataProps)
     useEffect(() => {
         product().queryProductById({ productId: productId }).then((res ) => {
             setData(res.data)
@@ -99,6 +111,15 @@ const ProductPage: FC = (props: ProductPageProps) => {
         let flagObj = { ...selectData }
         setSelectData({ ...flagObj, ...item })
         console.log("selectMsg", { ...flagObj, ...item })
+    }
+
+    const addShop = ()=>{
+        const {userName} = selectData
+        if(userName){
+
+        }else{
+            Taro.switchTab({ url: '/pages/login/index' })
+        }
     }
 
     return (
@@ -153,7 +174,7 @@ const ProductPage: FC = (props: ProductPageProps) => {
                             </View>
                         </View>
                         <View className='product-page-operation'>
-                            <View className='product-page-operation-item'>
+                            <View className='product-page-operation-item' onClick={addShop}>
                                 <Text>加入购物车</Text>
                             </View>
                             <View className='product-page-operation-item'>
