@@ -1,0 +1,62 @@
+.shop-top {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+
+    .shop-top-name {
+        width: 6rem;
+    }
+
+    .shop-top-operation {
+        width: 4rem;
+    }
+}
+
+.shop-bottom {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    padding: 0.2rem 0;
+    justify-content: space-between;
+    text-align: center;
+    box-shadow: 0px -2px 5px #ccc;
+
+    view {
+        display: flex;
+        height: 2rem;
+        align-items: center;
+    }
+
+    .shop-bottom-check {
+        width: 4rem;
+        margin-left: 0.5rem;
+
+        .check-box {
+            width: 1rem;
+            height: 1rem;
+            border: solid 1px #ccc;
+            border-radius: 50%;
+
+            &.active {
+                background-color: #ccc;
+            }
+        }
+    }
+
+    .manage-style {
+        .total-price{
+            ::before{
+                content: "￥";
+            }
+        }
+        view {
+            padding: 0 1rem;
+            color: #fff;
+            margin: 1rem ;
+            background-color: #fc9105;
+            border-radius: 1rem;
+        }
+    }
+}
