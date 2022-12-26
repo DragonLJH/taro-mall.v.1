@@ -46,17 +46,58 @@
     }
 
     .manage-style {
-        .total-price{
-            ::before{
+        .total-price {
+            ::before {
                 content: "￥";
             }
         }
+
         view {
             padding: 0 1rem;
             color: #fff;
-            margin: 1rem ;
+            margin: 1rem;
             background-color: #fc9105;
             border-radius: 1rem;
+        }
+    }
+}
+
+.shop-main {
+    margin: 10px 0px;
+
+    .shop-main-item {
+        margin: 10px;
+        padding: 10px;
+        box-shadow: 0px 0px 10px #ccc;
+        border-radius: 1rem;
+        border: solid 1px #ccc;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+
+        .shop-main-item-check {
+            width: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;  
+            .circle {
+                width: 1rem;
+                height: 1rem;
+                border: solid 1px #ccc;
+                border-radius: 50%;
+            }
+            &.active{
+                .circle { 
+                    background-color: #ccc;
+                }
+            }
+        }
+        .shop-main-item-img{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 4rem;
+            height: 100%;
         }
     }
 }

@@ -52,3 +52,14 @@ export const user = () => {
     return { queryUserByUserName }
 }
 
+
+
+// shop
+export const shop = () => {
+    const shop = "shop"
+    const queryShopByUserName = (data: object = {}) => {
+        let url = shop + "/queryShopByUserName"
+        return TARO.get(url, data)
+    }
+    return { queryShopByUserName }
+}
