@@ -48,11 +48,19 @@ class Shop extends Component<any> {
     this.setState({ selectAll: false })
   }
 
-  handleChange(value: number, item: shopDataProps) {
-    let flagObj = { ...item,selectNum:value } 
-    console.log("handleChange " , flagObj)
-    this.setState((prevState) => {
-      console.log(prevState)
+  handleChange(index: number, value: number, item: shopDataProps) {
+    let flagObj = { ...item, selectNum: value }
+    console.log("handleChange ", index, flagObj)
+    this.setState((prevState: any) => {
+      prevState.shopData[index] = flagObj
+      return prevState
+    })
+  }
+
+  checkClick(index: number) {
+    this.setState((prevState: any) => {
+      prevState.shopData[index]["check"] = !prevState.shopData[index]["check"]
+      return prevState
     })
   }
 
@@ -100,9 +108,9 @@ class Shop extends Component<any> {
         </View>
       </View>
       <View className='shop-main'>
-        {this.state.shopData.map((item: selectDataProps, index: number) => {
+        {this.state.shopData.map((item: shopDataProps, index: number) => {
           return (<View className='shop-main-item' key={index}>
-            <View className={`shop-main-item-check ${item.check ? 'active' : ''}`}>
+            <View className={`shop-main-item-check ${item.check ? 'active' : ''}`} onClick={() => this.checkClick(index)}>
               <View className='circle'></View>
             </View>
             <View className='shop-main-item-img'>
@@ -123,7 +131,7 @@ class Shop extends Component<any> {
                   max={10}
                   step={1}
                   value={item.selectNum}
-                  onChange={(value) => this.handleChange(value, item)}
+                  onChange={(value) => this.handleChange(index, value, item)}
                 />
               </View>
             </View>

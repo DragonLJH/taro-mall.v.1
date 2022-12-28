@@ -2,7 +2,12 @@
     display: flex;
     justify-content: space-between;
     text-align: center;
-
+    border: solid 1px #ccc;
+    box-shadow: 0px  -5px 5px #ccc;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    height: 2rem;
+    line-height: 2rem;
     .shop-top-name {
         width: 6rem;
     }
