@@ -1,7 +1,7 @@
 import { TARO } from '../taroRequest';
 
 // rotation
-export const rotation = () => {
+function Rotation() {
     const rotation = "rotation"
     const queryAllRotation = (data: object = {}) => {
         let url = rotation + "/queryAllRotation"
@@ -9,9 +9,10 @@ export const rotation = () => {
     }
     return { queryAllRotation }
 }
+export const rotation = Rotation()
 
 // emerge
-export const emerge = () => {
+function Emerge() {
     const emerge = "emerge"
     const queryAllEmerge = (data: object = {}) => {
         let url = emerge + "/queryAllEmerge"
@@ -19,10 +20,11 @@ export const emerge = () => {
     }
     return { queryAllEmerge }
 }
+export const emerge = Emerge()
 
 
 // product
-export const product = () => {
+function Product() {
     const product = "product"
     const queryProductByEmerge = (data: object = {}) => {
         let url = product + "/queryProductByEmerge"
@@ -40,10 +42,11 @@ export const product = () => {
 
     return { queryProductByEmerge, queryProductByProductMsg, queryProductById }
 }
+export const product = Product()
 
 
 // user
-export const user = () => {
+function User() {
     const user = "user"
     const queryUserByUserName = (data: object = {}) => {
         let url = user + "/queryUserByUserName"
@@ -51,15 +54,32 @@ export const user = () => {
     }
     return { queryUserByUserName }
 }
-
+export const user = User()
 
 
 // shop
-export const shop = () => {
+function Shop() {
     const shop = "shop"
     const queryShopByUserName = (data: object = {}) => {
         let url = shop + "/queryShopByUserName"
         return TARO.get(url, data)
     }
-    return { queryShopByUserName }
+
+    const updateShopById = (data: object = {}) => {
+        let url = shop + "/updateShopById"
+        return TARO.post(url, data)
+    }
+
+    const deleteShopbyId = (data: object = {}) => {
+        let url = shop + "/deleteShopbyId"
+        return TARO.post(url, data)
+    }
+    const insertShop = (data: object = {}) => {
+        let url = shop + "/insertShop"
+        return TARO.post(url, data)
+    }
+
+
+    return { queryShopByUserName, updateShopById, deleteShopbyId, insertShop }
 }
+export const shop = Shop()

@@ -20,7 +20,7 @@ const SearchPage: FC = (props: any) => {
     const { searchStr } = props.state
     const [searchArr, setSearchArr] = useState([])
     useEffect(() => {
-        product().queryProductByProductMsg({ productMsg: searchStr }).then((res) => {
+        product.queryProductByProductMsg({ productMsg: searchStr }).then((res) => {
             setSearchArr(res.data)
             console.log("useEffect-SearchPage", res)
         })

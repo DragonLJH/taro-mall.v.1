@@ -3,11 +3,12 @@
     justify-content: space-between;
     text-align: center;
     border: solid 1px #ccc;
-    box-shadow: 0px  -5px 5px #ccc;
+    box-shadow: 0px -5px 5px #ccc;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     height: 2rem;
     line-height: 2rem;
+
     .shop-top-name {
         width: 6rem;
     }
@@ -79,30 +80,44 @@
         overflow: hidden;
         display: flex;
         align-items: center;
+        position: relative;
 
         .shop-main-item-check {
             width: 2rem;
             display: flex;
             justify-content: center;
-            align-items: center;  
+            align-items: center;
+
             .circle {
                 width: 1rem;
                 height: 1rem;
                 border: solid 1px #ccc;
                 border-radius: 50%;
             }
-            &.active{
-                .circle { 
+
+            &.active {
+                .circle {
                     background-color: #ccc;
                 }
             }
         }
-        .shop-main-item-img{
+
+        .shop-main-item-img {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 4rem;
             height: 100%;
+        }
+
+        .at-icon-subtract-circle {
+            color: #f00;
+            position: absolute;
+            top: 0px;
+            right: 10px;
+            height: 100%;
+            display: flex;
+            align-items: center;
         }
     }
 }

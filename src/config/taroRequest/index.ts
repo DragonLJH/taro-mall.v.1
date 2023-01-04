@@ -29,6 +29,11 @@ class taroRequest {
                 'content-type': 'application/json' // 默认值
             }
         }
+        if (method == "POST") {
+            option["header"] = {
+                'content-type': 'application/x-www-form-urlencoded' 
+            }
+        }
         return Taro.request(option)
     }
 

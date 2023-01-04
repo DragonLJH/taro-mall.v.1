@@ -3,9 +3,10 @@ import { View, Text, CoverImage } from '@tarojs/components'
 import { AtIcon, AtFloatLayout, AtTag, AtInputNumber } from 'taro-ui'
 import { connect } from 'react-redux';
 import Carousel from '../Carousel';
+import MyAtToast from '../MyAtToast';
 import Taro from '@tarojs/taro'
 import Card from '../Card';
-import { rotation, emerge, product } from "../../config/taroApi";
+import { rotation, emerge, product, shop } from "../../config/taroApi";
 import './index.scss'
 import { stateType } from "../../store"
 
@@ -45,7 +46,7 @@ interface myTagsProps {
     selectMsg: Function
 }
 
-interface setSelectDataProps{
+interface setSelectDataProps {
     productId: number
     productName: string
     productRotationImg: string
@@ -53,7 +54,7 @@ interface setSelectDataProps{
     selectColor: string
     selectNum: number
     selectSize: string
-    userName: string     
+    userName: string
 }
 
 
@@ -91,18 +92,25 @@ const MyTags = (props: myTagsProps) => {
 
 const ProductPage: FC = (props: ProductPageProps) => {
     console.log("ProductPage", props)
-    const { productId,userName } = props.state
+    const { productId, userName } = props.state
     const [data, setData] = useState({} as productProps)
     const [choice, setChoice] = useState(false)
     const [selectData, setSelectData] = useState({ selectNum: 0 } as setSelectDataProps)
+
+    const [atToast, setAtToast] = useState({
+        text: "", status: "success", isOpened: false
+    })
     useEffect(() => {
-        product().queryProductById({ productId: productId }).then((res ) => {
+        product.queryProductById({ productId: productId }).then((res) => {
             setData(res.data)
             const { productRotationImg, productId, productName, productSellingPrice } = res.data
-            selectMsg({userName:userName,productRotationImg:productRotationImg[0],productId:productId
-                ,productName:productName,productSellingPrice:productSellingPrice}) 
+            selectMsg({
+                userName: userName, productRotationImg: productRotationImg[0], productId: productId
+                , productName: productName, productSellingPrice: productSellingPrice
+            })
             console.log("useEffect-ProductPage", productRotationImg, productId, productName, productSellingPrice)
         })
+        setAtToast({ text: "123", status: "success", isOpened: true })
     }, [])
     const handleClose = () => {
         setChoice(false)
@@ -113,18 +121,23 @@ const ProductPage: FC = (props: ProductPageProps) => {
         console.log("selectMsg", { ...flagObj, ...item })
     }
 
-    const addShop = ()=>{
-        const {userName} = selectData
-        if(userName){
+    const addShop = () => {
+        const { userName } = selectData
+        if (userName) {
+            shop.insertShop(selectData).then((res) => {
+                if (res.data) {
+                    Taro.switchTab({ url: '/pages/shop/index' })
+                }
 
-        }else{
+            })
+        } else {
             Taro.switchTab({ url: '/pages/login/index' })
         }
     }
 
     return (
         <>
-
+            {atToast.isOpened ? <MyAtToast isOpened={atToast.isOpened} text={atToast.text} status={atToast.status} /> : ""}
             {Object.keys(data).length ? (
                 <View className='product-page'>
                     <Carousel imgArr={data.productRotationImg} />

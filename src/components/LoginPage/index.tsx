@@ -41,7 +41,7 @@ const LoginPage: FC<any> = (props: LoginPageProps) => {
         setObjAp({ ...old, userPassword })
     }
     const onSubmit = () => {
-        user().queryUserByUserName(objAP).then((res) => {
+        user.queryUserByUserName(objAP).then((res) => {
             if (res.data) {
                 dispatch({ type: "CHANGE_USER", data: objAP.userName })
             }

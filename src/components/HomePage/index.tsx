@@ -16,7 +16,7 @@ const HomePage: FC = () => {
     const [emergeArr, setEmergeArr] = useState([])
 
     useEffect(() => {
-        rotation().queryAllRotation().then((res) => {
+        rotation.queryAllRotation().then((res) => {
             let arr = res.data.map((item) => {
                 return item.rotationImg
             })
@@ -33,12 +33,12 @@ const HomePage: FC = () => {
     }, [])
 
     const updataEmergeArr = () => {
-        return emerge().queryAllEmerge().then((res) => {
+        return emerge.queryAllEmerge().then((res) => {
             let arr = res.data.map((item) => {
                 return { emergeTag: item.emergeTag, data: [] }
             })
             let newArr = Promise.all(arr.map((value: emergeProps, index: number) => {
-                return product()["queryProductByEmerge"]({ emergeTag: value.emergeTag }).then((val) => {
+                return product["queryProductByEmerge"]({ emergeTag: value.emergeTag }).then((val) => {
                     value.data = val.data
                     return value
                 })
