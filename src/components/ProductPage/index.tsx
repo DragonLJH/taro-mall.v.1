@@ -4,6 +4,7 @@ import { AtIcon, AtFloatLayout, AtTag, AtInputNumber } from 'taro-ui'
 import { connect } from 'react-redux';
 import Carousel from '../Carousel';
 import MyAtToast from '../MyAtToast';
+import { myAtToastProps } from '../MyAtToast';
 import Taro from '@tarojs/taro'
 import Card from '../Card';
 import { rotation, emerge, product, shop } from "../../config/taroApi";
@@ -99,7 +100,7 @@ const ProductPage: FC = (props: ProductPageProps) => {
 
     const [atToast, setAtToast] = useState({
         text: "", status: "success", isOpened: false
-    })
+    } as myAtToastProps)
     useEffect(() => {
         product.queryProductById({ productId: productId }).then((res) => {
             setData(res.data)
@@ -110,7 +111,7 @@ const ProductPage: FC = (props: ProductPageProps) => {
             })
             console.log("useEffect-ProductPage", productRotationImg, productId, productName, productSellingPrice)
         })
-        setAtToast({ text: "123", status: "success", isOpened: true })
+
     }, [])
     const handleClose = () => {
         setChoice(false)
@@ -128,7 +129,7 @@ const ProductPage: FC = (props: ProductPageProps) => {
                 if (res.data) {
                     Taro.switchTab({ url: '/pages/shop/index' })
                 }
-
+                setAtToast({ text: "商品添加成功", status: "success", isOpened: true })
             })
         } else {
             Taro.switchTab({ url: '/pages/login/index' })

@@ -226,7 +226,8 @@ class Shop extends Component<any> {
             : (<View className='delete'>删除</View>)}
         </View>
       </View>
-      <MyAtToast isOpened={this.state.atToast.isOpened} text={this.state.atToast.text} status={this.state.atToast.status}></MyAtToast>
+      {this.state.atToast.isOpened?<MyAtToast isOpened={this.state.atToast.isOpened} text={this.state.atToast.text} status={this.state.atToast.status}></MyAtToast>:""}
+      
     </>)
   }
 }
