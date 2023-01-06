@@ -31,13 +31,11 @@ const LoginPage: FC<any> = (props: LoginPageProps) => {
     const { state, dispatch } = props
     const [objAP, setObjAp] = useState({} as objAPProps)
     const handleChangeAccount = (userName: string) => {
-        let old = { ...objAP }
-        console.log("handleChangeAccount", userName)
+        let old = { ...objAP } 
         setObjAp({ ...old, userName })
     }
     const handleChangePassword = (userPassword: string) => {
-        let old = { ...objAP }
-        console.log("handleChangeAccount", userPassword)
+        let old = { ...objAP } 
         setObjAp({ ...old, userPassword })
     }
     const onSubmit = () => {
