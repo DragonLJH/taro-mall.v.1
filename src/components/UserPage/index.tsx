@@ -32,10 +32,10 @@ const UserPage: FC<any> = (props: UserPageProps) => {
 
     return (
         <>
-            <AtAvatar circle text='龍'></AtAvatar>
-            <>
-                <Text>{state?.userName}</Text>
-            </>
+            <View className='user-title'>
+                <AtAvatar circle image='https://jdc.jd.com/img/200'></AtAvatar>
+                <Text>{state?.userName}123</Text>
+            </View>
 
         </>
     )

@@ -31,7 +31,8 @@ class Login extends Component<any> {
   }
 
   render() {
-    return this.props.state.userName ? <UserPage /> : <LoginPage />
+    // return this.props.state.userName ? <UserPage /> : <LoginPage />
+    return <UserPage />
   }
 }
 
