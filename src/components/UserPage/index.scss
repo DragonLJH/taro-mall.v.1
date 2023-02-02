@@ -1,3 +1,132 @@
-.user-title{
-    display: flex;
+.user {
+
+    .user-title {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 0.3rem;
+
+        .at-avatar {
+            box-shadow: 0px 0px 10px #aaa;
+            margin: 0 1rem;
+        }
+
+        .user-title-msg {
+            color: #000;
+            font-size: 0.8rem;
+            flex: 1;
+
+            .item-1 {
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+
+            .item-2 {
+                color: #666;
+            }
+
+            .item-3 {
+                display: flex;
+
+                text.br {
+                    flex: 1;
+
+                    &::after {
+                        content: "";
+                        border-right: solid 1px #000;
+                    }
+                }
+
+                text {
+                    display: inline-block;
+                    flex: 3;
+                }
+            }
+        }
+
+        .user-title-operation {
+            width: 4rem;
+            display: flex;
+            padding: 0.5rem;
+
+        }
+    }
+
+    .user-main {
+        overflow: hidden;
+        background-color: #ccc;
+    }
+
+
+
+
+    .user-main-card {
+        padding: 0.1rem 0.5rem;
+        margin: 0.5rem 0.2rem;
+        background-color: #fff;
+        border: solid 1px #ccc;
+        border-radius: 1rem;
+
+        .user-main-card-title {
+            font-size: 1.2rem;
+            color: #000;
+            display: flex;
+            margin-bottom: 1rem;
+
+            .left {
+                flex: 1;
+            }
+
+            .right {
+                text-align: right;
+                display: flex;
+                align-items: center;
+                font-size: 0.7rem;
+                width: 3rem;
+                color: #ccc;
+
+                text {
+                    display: inline-block;
+                    width: 100%;
+
+                    &::after {
+                        content: ">";
+                    }
+                }
+            }
+
+        }
+
+        .user-main-card-main {
+            display: flex;
+            padding: 0 1rem;
+            .my-icon{
+                flex: 1;
+                font-size: 1.2rem;
+            }
+        }
+
+    }
+
+
+
+
+
+
+
+    .my-icon {
+        text-align: center;
+        display: inline-block;
+        padding: 0 0.2rem;
+
+        view {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text {
+                font-size: 0.7rem;
+            }
+        }
+    }
 }
