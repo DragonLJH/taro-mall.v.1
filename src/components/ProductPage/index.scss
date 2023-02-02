@@ -74,10 +74,9 @@ $delColor: #ccc;
     }
 
     .product-page-bottom {
-        position: fixed;
+        position: fixed; 
         display: flex;
         justify-content: space-around;
-        bottom: 0px;
         width: 100%;
         padding: 5px 0px;
         background-color: #fff;
@@ -112,7 +111,18 @@ $delColor: #ccc;
             }
         }
     }
+
+
+    .product-img-msg {
+        .img {
+            img {
+                width: 100%;
+            }
+        }
+    }
 }
+
+
 
 .MyTags {
     margin-bottom: 20px;

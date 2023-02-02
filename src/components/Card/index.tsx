@@ -52,7 +52,7 @@ class Card extends Component<cardProps> {
                 <View className='card-img'>
                     <CoverImage className='img' src={this.props.item.productRotationImg[0]} />
                 </View>
-                <View className='card-main'>
+                <View className='card-main' >
                     <View className='card-main-title'>
                         <Text>{this.props.item.productName}</Text>
                     </View>

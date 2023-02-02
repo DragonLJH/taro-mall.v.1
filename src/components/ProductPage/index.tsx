@@ -1,5 +1,5 @@
 import { FC, useEffect, useState, Component } from 'react'
-import { View, Text, CoverImage } from '@tarojs/components'
+import { View, Text, CoverImage, ScrollView } from '@tarojs/components'
 import { AtIcon, AtFloatLayout, AtTag, AtInputNumber } from 'taro-ui'
 import { connect } from 'react-redux';
 import Carousel from '../Carousel';
@@ -97,6 +97,7 @@ const ProductPage: FC = (props: ProductPageProps) => {
     const [data, setData] = useState({} as productProps)
     const [choice, setChoice] = useState(false)
     const [selectData, setSelectData] = useState({ selectNum: 0 } as setSelectDataProps)
+    const [bottom, setBottom] = useState("0px")
 
     const [atToast, setAtToast] = useState({
         text: "", status: "success", isOpened: false
@@ -111,6 +112,7 @@ const ProductPage: FC = (props: ProductPageProps) => {
             })
             console.log("useEffect-ProductPage", productRotationImg, productId, productName, productSellingPrice)
         })
+        if (process.env.TARO_ENV == "h5") setBottom(`2.5rem`)
 
     }, [])
     const handleClose = () => {
@@ -140,64 +142,66 @@ const ProductPage: FC = (props: ProductPageProps) => {
         <>
             {atToast.isOpened ? <MyAtToast isOpened={atToast.isOpened} text={atToast.text} status={atToast.status} /> : ""}
             {Object.keys(data).length ? (
-                <View className='product-page'>
-                    <Carousel imgArr={data.productRotationImg} />
-                    <View className='product-msg'>
-                        <View className='price'>
-                            <Text>{data.productSellingPrice}</Text>
-                            <Text className='del'>{data.productPrice}</Text>
+                <>
+                    <View className='product-page'>
+                        <Carousel imgArr={data.productRotationImg} />
+                        <View className='product-msg'>
+                            <View className='price'>
+                                <Text>{data.productSellingPrice}</Text>
+                                <Text className='del'>{data.productPrice}</Text>
+                            </View>
+                            <View className='name'>
+                                <Text>{data.productName}</Text>
+                            </View>
+                            <View className='msg'>
+                                <Text className='msg-title'>{data.productEmergeSite.split("#")[0]}</Text>
+                                <Text>{data.productMsg}</Text>
+                            </View>
                         </View>
-                        <View className='name'>
-                            <Text>{data.productName}</Text>
+                        <View className='choice-msg' onClick={() => setChoice(true)}>
+                            <View className='at-icon at-icon-bullet-list'></View>
+                            <Text>共{data.productColor.length}种颜色分类可选</Text>
                         </View>
-                        <View className='msg'>
-                            <Text className='msg-title'>{data.productEmergeSite.split("#")[0]}</Text>
-                            <Text>{data.productMsg}</Text>
-                        </View>
-                    </View>
-                    <View className='choice-msg' onClick={() => setChoice(true)}>
-                        <View className='at-icon at-icon-bullet-list'></View>
-                        <Text>共{data.productColor.length}种颜色分类可选</Text>
-                    </View>
-                    <AtFloatLayout className='choice-msg-float-layout' isOpened={choice} onClose={() => setChoice(false)}>
-                        {/* {data.productColor.map((item, index) => {
+                        <AtFloatLayout className='choice-msg-float-layout' isOpened={choice} onClose={() => setChoice(false)}>
+                            {/* {data.productColor.map((item, index) => {
                             return (
                                 <AtTag key={index} type='primary' circle >{item}</AtTag>
                             )
                         })} */}
-                        <View>
-                            <Text>颜色</Text>
-                            <MyTags arr={data.productColor} type="selectColor" selectMsg={selectMsg}></MyTags>
-                        </View>
-                        <View>
-                            <Text>尺寸</Text>
-                            <MyTags arr={data.productSize} type="selectSize" selectMsg={selectMsg}></MyTags>
-                        </View>
-                        <AtInputNumber onChange={(value) => selectMsg({ selectNum: value })} value={selectData.selectNum} min={0} max={10} step={1} />
-                    </AtFloatLayout>
-                    <View className='product-img-msg'>
-                        {data.productMsgImg.map((item, index) => {
-                            return <CoverImage key={index} className='img' src={item} />
-                        })}
-                    </View>
-                    <View className='product-page-bottom'>
-                        <View className='product-page-star'>
-                            <View className='at-icon at-icon-heart'></View>
                             <View>
-                                <Text>收藏</Text>
+                                <Text>颜色</Text>
+                                <MyTags arr={data.productColor} type="selectColor" selectMsg={selectMsg}></MyTags>
+                            </View>
+                            <View>
+                                <Text>尺寸</Text>
+                                <MyTags arr={data.productSize} type="selectSize" selectMsg={selectMsg}></MyTags>
+                            </View>
+                            <AtInputNumber onChange={(value) => selectMsg({ selectNum: value })} value={selectData.selectNum} min={0} max={10} step={1} />
+                        </AtFloatLayout>
+                        <View className='product-img-msg'>
+                            {data.productMsgImg.map((item, index) => {
+                                return <CoverImage key={index} className='img' src={item} />
+                            })}
+                        </View>
+                        <View className='product-page-bottom' style={{ bottom: bottom }}>
+                            <View className='product-page-star'>
+                                <View className='at-icon at-icon-heart'></View>
+                                <View>
+                                    <Text>收藏</Text>
+                                </View>
+                            </View>
+                            <View className='product-page-operation'>
+                                <View className='product-page-operation-item' onClick={addShop}>
+                                    <Text>加入购物车</Text>
+                                </View>
+                                <View className='product-page-operation-item'>
+                                    <Text>立即购买</Text>
+                                </View>
                             </View>
                         </View>
-                        <View className='product-page-operation'>
-                            <View className='product-page-operation-item' onClick={addShop}>
-                                <Text>加入购物车</Text>
-                            </View>
-                            <View className='product-page-operation-item'>
-                                <Text>立即购买</Text>
-                            </View>
-                        </View>
-
                     </View>
-                </View>
+
+                </>
             ) : ""}
 
 

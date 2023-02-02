@@ -13,7 +13,7 @@
 .card {
     display: inline-block;
     width: 300px;
-    height: 600px;
+    height: 300px;
     padding: 10px;
     margin: 5px;
     border: solid 1px #ccc;
@@ -21,7 +21,6 @@
     .card-img {
         position: relative;
         width: 300px;
-        height: 300px;
         .img {
             position: absolute;
             width: 100%;
@@ -40,17 +39,20 @@
     }
     .card-main {
         width: 300px;
-        height: 300px;
         padding: 5px;
         view {
             margin: 5px 0px;
         }
         .card-main-title {
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            font-size: 1.25rem;
-            font-weight: bold;
+            text{
+                width: 100%;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                font-size: 1.25rem;
+                font-weight: bold;
+            }
+            
         }
         .card-main-price {
             color: #f00;
