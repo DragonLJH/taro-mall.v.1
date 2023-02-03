@@ -27,15 +27,15 @@ interface LoginPageProps {
 }
 
 
-const LoginPage: FC<any> = (props: LoginPageProps) => {
+const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
     const { state, dispatch } = props
     const [objAP, setObjAp] = useState({} as objAPProps)
     const handleChangeAccount = (userName: string) => {
-        let old = { ...objAP } 
+        let old = { ...objAP }
         setObjAp({ ...old, userName })
     }
     const handleChangePassword = (userPassword: string) => {
-        let old = { ...objAP } 
+        let old = { ...objAP }
         setObjAp({ ...old, userPassword })
     }
     const onSubmit = () => {
@@ -53,26 +53,30 @@ const LoginPage: FC<any> = (props: LoginPageProps) => {
     }
 
     return (
-        <> 
-            <AtInput
+        <View className='login-page'>
+            <View><AtInput
                 name='userName'
                 title='账号'
                 type='text'
                 placeholder='账号'
                 value={objAP.userName}
                 onChange={handleChangeAccount}
-            />
-            <AtInput
+            /></View>
+            <View><AtInput
                 name='userPassword'
                 title='密码'
                 type="password"
                 placeholder='密码'
                 value={objAP.userPassword}
                 onChange={handleChangePassword}
-            />
-            <AtButton type='primary' onClick={onSubmit}>登录</AtButton>
-            <AtButton onClick={onReset}>重置</AtButton>
-        </>
+            /></View>
+            <View><AtButton type='primary' onClick={onSubmit}>登录</AtButton>
+            </View>
+            <View><AtButton onClick={onReset}>重置</AtButton></View>
+
+
+
+        </View>
     )
 }
 

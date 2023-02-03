@@ -40,16 +40,20 @@ export default class CardMsgList extends Component<cardMsgProps> {
     render() {
         return (
             <View className='card-msg-list'>
-                <View className='card-msg-list-item'>
-                    <Text className='card-msg-list-item-text'>{this.props.item.emergeTag}</Text>
-                </View>
-                <ScrollView scrollX style={{ whiteSpace: "nowrap" }}>
-                    {this.props.item.data.map((item: productProps, index: number) => {
-                        return (
-                            <Card key={index} isFlex={false} item={item} />
-                        )
-                    })}
-                </ScrollView>
+                {this.props.item.data.length ?
+                    <>
+                        <View className='card-msg-list-item'>
+                            <Text className='card-msg-list-item-text'>{this.props.item.emergeTag}</Text>
+                        </View>
+                        <ScrollView scrollX style={{ whiteSpace: "nowrap" }}>
+                            {this.props.item.data.map((item: productProps, index: number) => {
+                                return (
+                                    <Card key={index} isFlex={false} item={item} />
+                                )
+                            })}
+                        </ScrollView>
+                    </>
+                    : ""}
             </View>
         )
     }

@@ -63,7 +63,6 @@
     .user-main-card {
         padding: 0.1rem 0.5rem;
         margin: 0.5rem 0.2rem;
-        background-color: #fff;
         border: solid 1px #ccc;
         border-radius: 1rem;
 
@@ -125,7 +124,11 @@
             align-items: center;
 
             text {
+                max-width: 3rem;
                 font-size: 0.7rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         }
     }

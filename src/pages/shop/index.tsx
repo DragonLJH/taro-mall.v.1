@@ -45,7 +45,8 @@ class Shop extends Component<any> {
       isOpened: false,
       text: "",
       status: "success"
-    }
+    },
+    bottom:"0px"
   }
 
   operationClick() {
@@ -127,6 +128,7 @@ class Shop extends Component<any> {
   }
 
   queryShopByUserName() {
+    if (process.env.TARO_ENV == "h5") this.setState({bottom:`2.5rem`}) 
     shop.queryShopByUserName({ userName: this.props.state.userName }).then((res) => {
       console.log(res)
       let resData = res.data.map((item) => {
@@ -216,7 +218,7 @@ class Shop extends Component<any> {
 
       </View>
 
-      <View className='shop-bottom'>
+      <View className='shop-bottom' style={{bottom:this.state.bottom}}>
         <View className='shop-bottom-check'>
           <View className={`check-box ${this.state.selectAll ? "active" : ""}`} onClick={() => this.selectAllFun()}></View>
           <Text>全选</Text>
