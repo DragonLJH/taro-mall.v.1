@@ -25,7 +25,7 @@ const SearchPage: FC = (props: any) => {
             console.log("useEffect-SearchPage", res)
         })
 
-    }, [])
+    }, [searchStr])
     return (
         <>
             <View>

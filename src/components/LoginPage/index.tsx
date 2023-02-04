@@ -29,7 +29,10 @@ interface LoginPageProps {
 
 const LoginPage: FC<LoginPageProps> = (props: LoginPageProps) => {
     const { state, dispatch } = props
-    const [objAP, setObjAp] = useState({} as objAPProps)
+    const [objAP, setObjAp] = useState({
+        userName: "18022429170",
+        userPassword: "123",
+    } as objAPProps)
     const handleChangeAccount = (userName: string) => {
         let old = { ...objAP }
         setObjAp({ ...old, userName })
