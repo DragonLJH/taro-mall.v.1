@@ -12,9 +12,9 @@ export default defineAppConfig({
   },
   tabBar: {
     list: [
-      { pagePath: "pages/index/index", text: "首页" },
-      { pagePath: "pages/shop/index", text: "购物车" },
-      { pagePath: "pages/login/index", text: "登录" },
+      { pagePath: "pages/index/index", text: "首页", iconPath: "./icon/home-default.png", selectedIconPath: "./icon/home.png" },
+      { pagePath: "pages/shop/index", text: "购物车", iconPath: "./icon/shop-default.png", selectedIconPath: "./icon/shop.png" },
+      { pagePath: "pages/login/index", text: "登录", iconPath: "./icon/my-default.png", selectedIconPath: "./icon/my.png" },
     ]
   }
 })
