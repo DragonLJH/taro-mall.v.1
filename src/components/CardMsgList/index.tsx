@@ -45,7 +45,7 @@ export default class CardMsgList extends Component<cardMsgProps> {
                         <View className='card-msg-list-item'>
                             <Text className='card-msg-list-item-text'>{this.props.item.emergeTag}</Text>
                         </View>
-                        <ScrollView scrollX style={{ whiteSpace: "nowrap" }}>
+                        <ScrollView scrollX style={{ whiteSpace: "nowrap",display:"flex" }}>
                             {this.props.item.data.map((item: productProps, index: number) => {
                                 return (
                                     <Card key={index} isFlex={false} item={item} />

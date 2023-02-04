@@ -1,16 +1,18 @@
 // 卡片左右格式
-.card.flex{
-    display: flex;
-    width: calc(100% - 40px);
-    height: 300px;
-    align-items: center; 
-    view{
-        flex: 1;
-    }
-}
+
 
 // 卡片上下格式
 .card {
+    &.flex{// 卡片左右格式
+        display: flex;
+        width: calc(100% - 40px);
+        height: 300px;
+        align-items: center; 
+        view{
+            flex: 1;
+        }
+    }
+    
     display: inline-block;
     width: 300px;
     height: 300px;
@@ -21,6 +23,7 @@
     .card-img {
         position: relative;
         width: 300px;
+        height: 300px;
         .img {
             position: absolute;
             width: 100%;
